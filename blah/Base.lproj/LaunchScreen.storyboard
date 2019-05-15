@@ -18,12 +18,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="TGQ-Op-TUd">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="TGQ-Op-TUd">
                                 <rect key="frame" x="85" y="235" width="205" height="182"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="182" id="xe6-g8-f77"/>
+                                </constraints>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Uif-hI-Y3D">
+                                <rect key="frame" x="178" y="478" width="20" height="20"/>
+                                <color key="color" red="0.66558712720000002" green="0.1345248818" blue="0.96476012470000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="TGQ-Op-TUd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="215" id="1WC-Hp-Z14"/>
+                            <constraint firstItem="TGQ-Op-TUd" firstAttribute="centerX" secondItem="Uif-hI-Y3D" secondAttribute="centerX" id="MC5-4a-38c"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Uif-hI-Y3D" secondAttribute="bottom" constant="170" id="MgG-8N-kzw"/>
+                            <constraint firstItem="Uif-hI-Y3D" firstAttribute="top" secondItem="TGQ-Op-TUd" secondAttribute="bottom" constant="61" id="chJ-ER-bqu"/>
+                            <constraint firstItem="Uif-hI-Y3D" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="177" id="lp3-G9-8r6"/>
+                            <constraint firstItem="Uif-hI-Y3D" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="mW2-CE-l9W"/>
+                            <constraint firstItem="TGQ-Op-TUd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="85" id="o6u-Xp-CD3"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>

@@ -7,7 +7,7 @@
 //
 ///Users/catharinenoeth/Desktop/blah/blah/ViewController.swift
 import UIKit
-
+import Alamofire
 class ViewController: UIViewController {
     
    
@@ -22,13 +22,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var woofrLogo: UIImageView!
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var register: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     @IBAction func login(_ sender: UIButton) {
-        let user_email = emailtextbox.text
-        let user_pass = passwordtextbox.text
-        if(user_email == "" || user_pass == ""){
+        
+        if(passwordtextbox.text == "" || emailtextbox.text == ""){
             let alertController = UIAlertController(title: "Missing Fields", message: "Please enter in your email and password.", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
             alertController.addAction(defaultAction)
@@ -36,22 +36,12 @@ class ViewController: UIViewController {
         }
         emailtextbox.layer.cornerRadius = 12
         passwordtextbox.layer.cornerRadius = 12
-    }
+        
+        //let parameters = []
+        
     
-   
- //
-        
-        
-//        login.layer.shadowRadius = 5
-//        login.layer.cornerRadius = 10
-
   
-         
-        
-
-      
+    }
     
   
 }
-
-

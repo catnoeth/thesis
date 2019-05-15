@@ -10,6 +10,8 @@ import UIKit
 
 class sittersscreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewSitterProtocol   {
     
+    
+    
    
     @IBOutlet weak var sitterlabel: UILabel!
     
@@ -55,16 +57,23 @@ class sittersscreenViewController: UIViewController, UITableViewDelegate, UITabl
 
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
        
         // Retrieve cell
         let cellIdentifier: String = "sitter_cell"
+       
         let myCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
+        
         // Get the location to be shown
         let item: SitterModel = feedItems[indexPath.row] as! SitterModel
+       
         // Get references to labels of cell
-        let data = item.firstname! + " is sitting for: " + item.name!
+        let data = item.sitter! + ": " + "sitting for " + item.petname! + " on " + item.start_date!
+       
         myCell.textLabel!.text = data
+        myCell.textLabel!.textAlignment = .left
+    
+        
 
         return myCell
     }

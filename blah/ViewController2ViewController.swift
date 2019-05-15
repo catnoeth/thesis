@@ -7,7 +7,8 @@
 //
 
 import UIKit
-//import Alamofire
+import Foundation
+import Alamofire
 class ViewController2ViewController: UIViewController {
    
    
@@ -21,43 +22,56 @@ class ViewController2ViewController: UIViewController {
     @IBOutlet weak var lastnametext: UITextField!
     
    
-    @IBOutlet weak var labelMessage: UILabel!
+    @IBOutlet weak var register: UIButton!
+    @IBOutlet weak var signInNowButton: UIButton!
+    
+    
+    
     @IBAction func buttonClicked(_ sender: Any) {
         
         
-        let request = NSMutableURLRequest(url: NSURL(string: "http://woofrthesis.com/signup.php")! as URL)
+
+        let urlString = "http://woofrthesis.com/signup.php"
         
-       
-        let postString = "username = \(usernametext.text!)&password = \(passwordtext.text!)&firstname = \(firstnametext.text!)&lastname = \(lastnametext.text!)&about = \(aboutyoutext.text!)&email = \(emailtext.text!)&location = \(locationtext.text!)"
-        
-        
-        request.httpMethod = "POST"
-        request.httpBody = postString.data(using: .utf8)
-        
-        NSURLConnection.sendAsynchronousRequest(request as URLRequest, queue: OperationQueue.main)
-        {
-            (response, data, error) in
-            print(response)
-            
+        if(usernametext.text == "" || passwordtext.text == "" || firstnametext.text == "" || lastnametext.text == "" || aboutyoutext.text == "" || emailtext.text == "" || locationtext.text == ""){
+            let alertController = UIAlertController(title: "Missing Fields", message: "Please enter in your email and password.", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+            alertController.addAction(defaultAction)
+            present(alertController, animated: true, completion: nil)
         }
-//        let task = URLSession.shared.dataTask(with: request as URLRequest) {
-//            data, response, error in
-//
-//            if error != nil {
-//                //print("error=\(String(describing: error))")
-//                return
-//            }
-//
-//            //print("response = \(String(describing: response))")
-//
-//            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-//            print("responseString = \(String(describing: responseString))")
-//            //print(data)
-//        }
-//        task.resume()
+            
+            
+        else{
         
-    }
+            let parameters: Parameters = ["username": usernametext.text!, "password": passwordtext.text!, "firstname": firstnametext.text!, "lastname": lastnametext.text!, "about": aboutyoutext.text!, "email": emailtext.text!, "location": locationtext.text!]
+
+            Alamofire.request(urlString, method: .post, parameters: parameters,encoding: URLEncoding.default, headers: nil).responseString {
+                response in
+                switch response.result {
+                case .success:
+                    print(response)
+                    print(parameters)
+                    
+                    let alertController = UIAlertController(title: "Success!", message: "You have successfully created an account :)", preferredStyle: .alert)
+                    let defaultAction = UIAlertAction(title: "Log In Now!", style: .default){(action) -> Void in let ViewController = self.storyboard?.instantiateViewController(withIdentifier: "signin")
+                        self.present(ViewController!, animated: true, completion:nil)
+                    }
+                    
+                    
+                    
+                    alertController.addAction(defaultAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                    
+                    break
+                case .failure(let error):
+                    
+                    print(error)
+                }
+        }
     
+    }
+    }
     override func viewDidLoad() {
         
 
@@ -72,13 +86,7 @@ class ViewController2ViewController: UIViewController {
 
     /*
     // MARK: - Navigation
-
-     @IBOutlet weak var scrollbox: UIScrollView!
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+*/
 
 }
+

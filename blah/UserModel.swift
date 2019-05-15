@@ -19,7 +19,6 @@ class UserModel: NSObject {
     var email: String?
     var username: String?
     var password: String?
-    //var usersince: String?
     var about: String?
     var id: String?
     
@@ -34,18 +33,11 @@ class UserModel: NSObject {
         self.email = email;
         self.username = username;
         self.password = password;
-        //self.usersince = usersince;
         self.about = about;
         self.id = id;
         
         
     }
-    // Print objects current state
-    
-//    override var description: String{
-//        return "Name: \(firstname), Last Name: \(lastname), Location: \(location), Email: \(email), Username: \(username), Password: \(password), User Since: \(usersince), About: \(about), ID: \(id)"
-//        
-//        
-//    }
+
 
 }

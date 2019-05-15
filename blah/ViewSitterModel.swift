@@ -14,7 +14,7 @@ protocol ViewSitterProtocol: class{
 class ViewSitterModel: NSObject, URLSessionDataDelegate {
     weak var delegate: ViewSitterProtocol!
     var data = Data()
-    let urlPath: String = "http://woofrthesis.com/sitter.php"
+    let urlPath: String = "http://woofrthesis.com/calendar.php"
     
     func downloadItems(){
         let url: URL = URL(string: urlPath)!
@@ -26,7 +26,6 @@ class ViewSitterModel: NSObject, URLSessionDataDelegate {
                 print("Failed to download data")
             }else {
                 print("Data downloaded")
-                //print(url)
                 
                 self.parseJSON(data!)
             }
@@ -56,17 +55,22 @@ class ViewSitterModel: NSObject, URLSessionDataDelegate {
             {
                 
                 jsonElement = jsonResult[i] as! NSDictionary
-                let sitter = SitterModel()
+                let sitterr = SitterModel()
                 
-                if let firstname = jsonElement["firstname"] as? String,
-                    let lastname = jsonElement["lastname"] as? String,
-                    let name = jsonElement["name"] as? String
+                if let sitter = jsonElement["sitter"] as? String,
+                    let petname = jsonElement["petname"] as? String,
+                    let species = jsonElement["species"] as? String,
+                    let start_date = jsonElement["start_date"] as? String,
+                    let end_date = jsonElement["end_date"] as? String
+                    
                 {
-                    sitter.firstname = firstname
-                    sitter.lastname = lastname
-                    sitter.name = name
+                    sitterr.sitter = sitter
+                    sitterr.petname = petname
+                    sitterr.species = species
+                    sitterr.start_date = start_date
+                    sitterr.end_date = end_date
                 }
-                sitters.add(sitter)
+                sitters.add(sitterr)
                 
               
         }

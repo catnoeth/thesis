@@ -17,15 +17,18 @@ class discover: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
    
     var feeditems: NSArray = NSArray()
     var selectedUser: UserModel = UserModel()
+    var selectedPet: PetModel = PetModel()
     
     
     @IBOutlet weak var sitters: UITableView!
     
-    @IBOutlet weak var pets_view: UIView!
+  
     
+    @IBOutlet weak var petsLabel: UILabel!
+    @IBOutlet weak var petsView: UITableView!
     @IBOutlet weak var title_label: UILabel!
     
-    @IBOutlet weak var pets_collection: UICollectionView!
+   
     
     override func viewDidLoad() {
         
@@ -33,12 +36,19 @@ class discover: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
         
         self.sitters.delegate = self
         self.sitters.dataSource = self
-        
+//        self.petsView.delegate = self
+//        self.petsView.dataSource = self
+//
         
         let userModel = ViewUserModel()
         userModel.delegate = self
         
         userModel.downloadItems()
+        
+//        let petModel = ViewPetModel()
+//        petModel.delegate = self
+//
+//        petModel.downloadItems()
 
         // Do any additional setup after loading the view.
     }
@@ -56,6 +66,7 @@ class discover: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier: String = "BasicCell"
+        
         let item: UserModel = feeditems[indexPath.row] as! UserModel
         //print (item)
         let myCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
@@ -69,15 +80,7 @@ class discover: UIViewController, UITableViewDelegate, UITableViewDataSource, Vi
         return myCell
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
-        let cellIdentifier: String = "CollectionCell"
-        let item: UserModel = feeditems[indexPath.row] as! UserModel
-       
-        let myCell: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
-        
-        myCell.backgroundColor = .black
-        return myCell
-    }
+
     /*
     // MARK: - Navigation
 
