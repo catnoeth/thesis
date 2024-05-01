@@ -1,4 +1,26 @@
-# thesis
-Woofr is a pet sitting application that users can use when they need someone to sit their pet. 
+Keycloak
+========
 
-Included in this repo is all the files/code that handles the ViewControllers, as well as Model files to grab and hold data maintained from the database to be displayed in each ViewController. (the php files, and the files in the folder called "blah" are the most recent code files)
+To get help configuring Keycloak via the CLI, run:
+
+on Linux/Unix:
+
+    $ bin/kc.sh
+
+on Windows:
+
+    $ bin\kc.bat
+
+To try Keycloak out in development mode, run: 
+
+on Linux/Unix:
+
+    $ bin/kc.sh start-dev
+
+on Windows:
+
+    $ bin\kc.bat start-dev
+
+After the server boots, open http://localhost:8080 in your web browser. The welcome page will indicate that the server is running.
+
+To get started, check out the [configuration guides](https://www.keycloak.org/guides#server).
